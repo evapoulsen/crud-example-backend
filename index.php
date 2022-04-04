@@ -84,7 +84,7 @@
             $firstName = $data['firstName'];
             $lastName = $data['lastName'];
             $password = $data['password'];
-            $pass_hash = ($password, PASSWORD_DEFAULT);
+            $pass_hash = password_hash("$password", PASSWORD_DEFAULT);
             $query = "INSERT INTO users(firstName, lastName, email, pwd, created_at) 
             VALUES('$firstName', '$lastName,' '$email', '$pass_hash', NOW())";
             $result = mysqli_query($con, $query);
