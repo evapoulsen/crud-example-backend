@@ -77,5 +77,24 @@
             }
             echo json_encode($response);
             break;
+        
+        case "POST":
+            $data = json_decode(file_get_contents('php://input'), true);
+            $email = $data['email'];
+            $firstName = $data['firstName'];
+            $lastName = $data['lastName'];
+            $password = $data['password'];
+            $pass_hash = ($password, PASSWORD_DEFAULT);
+            $query = "INSERT INTO users(firstName, lastName, email, pwd, created_at) VALUES('$firstName', '$lastName,' '$email', '$pass_hash', NOW())";
+            $result = mysqli_query($con, $query);
+            if (!$result) {
+                $response = ['status' => 0, 'message' => 'Failed to create user.'];
+                die(mysqli_error($con));
+            } else {
+                $response = ['status' => 1, 'message' => 'User successfully created.'];
+            }
         }
+
+        
+
 ?>
