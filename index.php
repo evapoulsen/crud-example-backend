@@ -85,8 +85,8 @@
             $lastName = $data['lastName'];
             $password = $data['password'];
             $pass_hash = password_hash("$password", PASSWORD_DEFAULT);
-            $query = "INSERT INTO users(firstName, lastName, email, pwd, created_at) 
-            VALUES('$firstName', '$lastName,' '$email', '$pass_hash', NOW())";
+            $query = "INSERT INTO users(firstName, lastName, email, pwd) 
+            VALUES('$firstName', '$lastName,', '$email', '$pass_hash')";
             $result = mysqli_query($con, $query);
             if (!$result) {
                 $response = ['status' => 0, 'message' => 'Failed to create user.'];
@@ -95,7 +95,4 @@
                 $response = ['status' => 1, 'message' => 'User successfully created.'];
             }
         }
-
-        
-
 ?>
