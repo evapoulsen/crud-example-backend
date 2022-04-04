@@ -86,7 +86,7 @@
             $password = $data['password'];
             $pass_hash = password_hash("$password", PASSWORD_DEFAULT);
             $query = "INSERT INTO users(firstName, lastName, email, pwd) 
-            VALUES('$firstName', '$lastName,', '$email', '$pass_hash')";
+            VALUES('$firstName', '$lastName', '$email', '$pass_hash')";
             $result = mysqli_query($con, $query);
             if (!$result) {
                 $response = ['status' => 0, 'message' => 'Failed to create user.'];
